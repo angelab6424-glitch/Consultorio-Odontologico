@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Pilar Neira | Consultorio Odontológico Premium</title>
+    
+    <!-- Librerías Externas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --off-white: #F9FAFB;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--off-white);
+            color: #1a1a1a;
+        }
+        h1, h2, h3, .luxury-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .border-gold { border-color: var(--gold); }
+        
+        .service-card {
+            background: white;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.1);
+        }
+
+        section { scroll-margin-top: 80px; }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Contenedor para Firebase */
+        #firebase-testimonials-container {
+            min-h: 300px;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/573158605690" target="_blank" class="fixed bottom-6 right-6 z-[100] btn-whatsapp text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-[90] bg-black text-white border-b border-gold/30">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-xl font-bold tracking-tighter text-gold leading-none uppercase">Dra. Pilar Neira</span>
+                <span class="text-[8px] tracking-[0.3em] uppercase text-gray-400 mt-1">Consultorio Odontológico</span>
+            </div>
+            <div class="hidden lg:flex space-x-6 text-[10px] font-bold uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-gold transition">Inicio</a>
+                <a href="#servicios" class="hover:text-gold transition">Servicios</a>
+                <a href="#equipo" class="hover:text-gold transition">Equipo Médico</a>
+                <a href="#cita" class="hover:text-gold transition text-gold">Agendar Cita</a>
+                <a href="#encuentranos" class="hover:text-gold transition">Encuéntranos</a>
+                <a href="#nosotros" class="hover:text-gold transition">Sobre Nosotros</a>
+            </div>
+            <button class="lg:hidden text-gold text-2xl" id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center bg-black overflow-hidden pt-20">
+        <div class="absolute inset-0">
+            <img src="Img/PORTADA.jpg" class="w-full h-full object-cover opacity-50" alt="Bienvenido al Consultorio">
+        </div>
+        <div class="relative z-10 text-center px-4" data-aos="fade-up">
+            <h2 class="text-gold text-lg md:text-xl tracking-[0.4em] uppercase mb-4">Bienvenido al Consultorio Odontológico</h2>
+            <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 luxury-font leading-tight">El lugar donde la salud y la <br><span class="text-gold">estética de tu sonrisa</span> se unen.</h1>
+            <p class="text-xl md:text-2xl font-light italic text-gray-200 mb-10 tracking-widest">¡Trabajamos en la salud de tu sonrisa!</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#cita" class="bg-gold text-black px-10 py-4 font-bold uppercase tracking-widest hover:bg-white transition-all w-full md:w-auto">Agendar Cita</a>
+                <a href="https://wa.me/573158605690" target="_blank" class="border border-white text-white px-10 py-4 font-bold uppercase tracking-widest hover:bg-gold hover:border-gold hover:text-black transition-all w-full md:w-auto">WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-24 bg-[#F9FAFB] px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl luxury-font italic mb-4">Nuestros <span class="text-gold font-bold">Servicios</span></h2>
+                <div class="w-24 h-1 bg-gold mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. Urgencias -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up">
+                    <img src="Img/urgencias.png" class="w-full h-48 object-cover rounded-lg mb-6" alt="Urgencias">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Urgencias</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Atención inmediata para dolores o accidentes dentales. Nuestro equipo está listo para ofrecerte una solución rápida y efectiva para tu bienestar.</p>
+                    </div>
+                </div>
+                <!-- 2. Implantes -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="Img/implantes.jpeg" class="w-full h-48 object-cover rounded-lg mb-6" alt="Implantes">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Implantes Dentales</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Recupera tu sonrisa con implantes duraderos y naturales. Solución ideal para reemplazar dientes perdidos y restaurar tanto estética como función.</p>
+                    </div>
+                </div>
+                <!-- 3. Ortodoncia -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="Img/Ortodoncia.jpg" class="w-full h-48 object-cover rounded-lg mb-6" alt="Ortodoncia">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Ortodoncia</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Corrige la posición de tus dientes con nuestros tratamientos de ortodoncia. ¡Logra una sonrisa alineada y saludable con la mejor tecnología!.</p>
+                    </div>
+                </div>
+                <!-- 4. Blanqueamiento -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up">
+                    <img src="Img/Blanqueamiento.jpg" class="w-full h-48 object-cover rounded-lg mb-6" alt="Blanqueamiento">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Blanqueamiento</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Recupera el brillo de tu sonrisa con nuestro tratamiento de blanqueamiento profesional. ¡Haz que tu sonrisa luzca más brillante y fresca!.</p>
+                    </div>
+                </div>
+                <!-- 5. Diseño de Sonrisa -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="Img/diseño de sonrisa.webp" class="w-full h-48 object-cover rounded-lg mb-6" alt="Diseño">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Diseño de Sonrisa</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Logra la sonrisa perfecta con un tratamiento personalizado que combina ortodoncia, blanqueamiento y otros procedimientos para una estética única.</p>
+                    </div>
+                </div>
+                <!-- 6. Coronas -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="Img/corona.jpg" class="w-full h-48 object-cover rounded-lg mb-6" alt="Coronas">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Coronas</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Restauración dental completa con coronas a medida, para dientes más fuertes, funcionales y naturales. ¡Sonríe con confianza!.</p>
+                    </div>
+                </div>
+                <!-- 7. Prótesis -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up">
+                    <img src="Img/protesis.jpg" class="w-full h-48 object-cover rounded-lg mb-6" alt="Prótesis">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Prótesis</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Recupera la funcionalidad y estética dental con nuestras prótesis personalizadas. Comodidad y calidad para tu bienestar.</p>
+                    </div>
+                </div>
+                <!-- 8. Revisiones -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="Img/revision.jpg" class="w-full h-48 object-cover rounded-lg mb-6" alt="Revisiones">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Revisiones y Diagnósticos</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Revisiones periódicas para detectar problemas a tiempo y mantener tu salud bucal. ¡La prevención es la clave para una sonrisa saludable!.</p>
+                    </div>
+                </div>
+                <!-- 9. Terapias Láser -->
+                <div class="service-card p-2 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="Img/laser.png" class="w-full h-48 object-cover rounded-lg mb-6" alt="Láser">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter text-gold">Terapias Láser</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Tratamientos modernos con láser que aceleran la recuperación, reducen el dolor y mejoran la cicatrización en diversos procedimientos dentales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO MÉDICO -->
+    <section id="equipo" class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl italic mb-16 luxury-font">Conoce a <span class="text-gold font-bold">Nuestro Equipo</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div data-aos="zoom-in">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
+                        <img src="Img/Pilar.jpeg" class="w-full h-full object-cover rounded-full" alt="Dra. Pilar Neira">
+                    </div>
+                    <h3 class="text-xl font-bold">Pilar Neira</h3>
+                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Doctora</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
+                        <img src="Img/Santiago.jpeg" class="w-full h-full object-cover rounded-full" alt="Santiago">
+                    </div>
+                    <h3 class="text-xl font-bold">Santiago Bohorquez</h3>
+                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Doctor</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
+                        <img src="Img/Paula.png" class="w-full h-full object-cover rounded-full" alt="Paula">
+                    </div>
+                    <h3 class="text-xl font-bold">Paula Bohorquez</h3>
+                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Doctora</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
+                        <img src="Img/20.png" class="w-full h-full object-cover rounded-full" alt="Tatiana">
+                    </div>
+                    <h3 class="text-xl font-bold">Tatiana Bohorquez</h3>
+                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Auxiliar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AGENDA TU CITA (Formspree) -->
+    <section id="cita" class="py-24 bg-[#F9FAFB] px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl italic mb-6 luxury-font">Agenda <span class="text-gold font-bold">Tu Cita</span></h2>
+                <p class="text-gray-600 text-lg mb-8 italic">¡Queremos que vivas la mejor experiencia en el cuidado de tu sonrisa!</p>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start gap-6">
+                        <span class="text-3xl">📞</span>
+                        <div>
+                            <p class="font-bold text-lg uppercase tracking-widest">Te llamamos</p>
+                            <p class="text-gray-500 text-sm">Déjanos tus datos en el formulario y te contactaremos en el horario que mejor se ajuste a ti.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6">
+                        <span class="text-3xl">📲</span>
+                        <div>
+                            <p class="font-bold text-lg uppercase tracking-widest">Llámanos</p>
+                            <p class="text-gray-500 text-sm italic">Puedes comunicarte directamente al <span class="text-gold font-bold">315 860 5690</span> para agendar tu cita.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6">
+                        <span class="text-3xl">💬</span>
+                        <div>
+                            <p class="font-bold text-lg uppercase tracking-widest italic">Hablemos por WhatsApp</p>
+                            <a href="https://wa.me/573158605690" target="_blank" class="text-gold hover:underline font-semibold">Responde rápido con solo un mensaje aquí.</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalles de Atención -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+                    <div class="p-4 bg-white shadow-sm rounded-lg border border-gray-100 text-center">
+                        <span class="text-gold text-2xl mb-2 block">🦷</span>
+                        <p class="text-[9px] font-bold uppercase">Atención personalizada</p>
+                        <p class="text-[8px] text-gray-400">Planes a la medida para cada paciente</p>
+                    </div>
+                    <div class="p-4 bg-white shadow-sm rounded-lg border border-gray-100 text-center">
+                        <span class="text-gold text-2xl mb-2 block">⚙️</span>
+                        <p class="text-[9px] font-bold uppercase">Tecnología avanzada</p>
+                        <p class="text-[8px] text-gray-400">Equipos modernos y seguros</p>
+                    </div>
+                    <div class="p-4 bg-white shadow-sm rounded-lg border border-gray-100 text-center">
+                        <span class="text-gold text-2xl mb-2 block">🕒</span>
+                        <p class="text-[9px] font-bold uppercase">Horarios flexibles</p>
+                        <p class="text-[8px] text-gray-400">Atendemos según tu disponibilidad</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 shadow-2xl rounded-sm border-t-4 border-gold" data-aos="fade-left">
+                <form action="https://formspree.io/f/mnjbwkpv" method="POST" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" name="Nombre" placeholder="Nombre completo*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                        <input type="text" name="Apellido" placeholder="Apellido*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                    </div>
+                    <input type="email" name="Email" placeholder="Correo electrónico*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="tel" name="Telefono" placeholder="Número de teléfono*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                        <input type="text" name="Documento" placeholder="Número de documento*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                    </div>
+                    <input type="text" name="Ciudad" placeholder="Ciudad de contacto*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                    
+                    <select name="Servicio" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold text-gray-500" required>
+                        <option value="">Selecciona el servicio*</option>
+                        <option>Urgencias</option>
+                        <option>Implantes Dentales</option>
+                        <option>Ortodoncia</option>
+                        <option>Blanqueamiento</option>
+                        <option>Diseño de Sonrisa</option>
+                        <option>Coronas / Prótesis</option>
+                        <option>Revisiones y Diagnósticos</option>
+                        <option>Terapias Láser</option>
+                    </select>
+
+                    <select name="Horario" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold text-gray-500" required>
+                        <option value="">Horario preferido*</option>
+                        <option>Mañana (9:00 AM - 12:00 PM)</option>
+                        <option>Tarde (1:00 PM - 6:00 PM)</option>
+                    </select>
+
+                    <!-- SECCIÓN DE CHECKBOXES ACTUALIZADA -->
+                    <div class="space-y-3 py-2">
+                        <label class="flex items-start gap-3 text-[10px] text-gray-400 cursor-pointer group">
+                            <input type="checkbox" required class="accent-gold w-4 h-4 mt-0.5">
+                            <span class="leading-tight">He leído y acepto la <a href="politica-privacidad.html" target="_blank" class="underline text-gold hover:text-white transition-colors">Política de Privacidad</a></span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 text-[10px] text-gray-400 cursor-pointer group">
+                            <input type="checkbox" required class="accent-gold w-4 h-4 mt-0.5">
+                            <span class="leading-tight">Autorizo el <button type="button" id="open-modal" class="underline text-gold hover:text-white transition-colors text-left">tratamiento de mis datos personales</button></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-black text-white font-extrabold py-5 uppercase tracking-widest hover:bg-gold hover:text-black transition-all">Agendar mi cita</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENCUÉNTRANOS -->
+    <section id="encuentranos" class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl italic mb-8 luxury-font">Encuéntranos</h2>
+                <div class="space-y-6">
+                    <p class="flex items-start gap-4 text-gray-700">
+                        <span class="text-gold text-2xl">📍</span> 
+                        <span>Ak. 50 #29B-24, Puente Aranda, Bogotá D.C.</span>
+                    </p>
+                    <p class="flex items-start gap-4 text-gray-700">
+                        <span class="text-gold text-2xl">📞</span> 
+                        <span>Teléfono: 315 860 5690</span>
+                    </p>
+                    <p class="flex items-start gap-4 text-gray-700">
+                        <span class="text-gold text-2xl">📧</span> 
+                        <span>Correo: pili1702@hotmail.com</span>
+                    </p>
+                    <div class="p-6 bg-[#F9FAFB] border-l-4 border-gold shadow-sm">
+                        <p class="font-bold text-black uppercase mb-3 italic text-sm">Horario de atención:</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Lunes a Viernes: 9:00 AM - 6:00 PM.<br>Sábados: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-100" data-aos="zoom-in">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.9181119565576!2d-74.11977712415951!3d4.595735142646633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f993ce8348883%3A0x67c293671239c08d!2sAk.%2050%20%2329b-24%2C%20Puente%20Aranda%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1715873400000!5m2!1ses!2sco" width="100%" height="100%" style="border:0; filter: grayscale(100%);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros" class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl luxury-font italic mb-8 italic">Sobre <span class="text-gold font-bold">Nosotros</span></h2>
+                    <p class="text-lg text-gray-700 leading-relaxed italic mb-12 font-light italic">"En nuestra clínica, bioremos que una sonrisa sana transforma vidas. Ofrecemos atención profesional, confiable y personalizada, enfocada en tu bienestar."</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="p-8 bg-[#F9FAFB] border-l-4 border-gold rounded-r-xl shadow-sm">
+                            <h3 class="text-2xl font-bold uppercase text-black mb-4 italic">Misión</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-light italic">Mejorar la salud bucal de nuestros pacientes ofreciendo un servicio profesional, confiable y humano, con tratamientos adaptados a cada necesidad.</p>
+                        </div>
+                        <div class="p-8 bg-[#F9FAFB] border-l-4 border-gold rounded-r-xl shadow-sm">
+                            <h3 class="text-2xl font-bold uppercase text-black mb-4 italic">Visión</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-light italic">Ser líderes en el cuidado odontológico, combinando tecnología de punta con un enfoque cálido que priorice la confianza y el bienestar de cada persona.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="Img/vision.jpg" class="w-full h-[500px] object-cover rounded shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000" alt="Consultorio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-black text-center border-t border-gold/30">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-gold font-extrabold tracking-[0.5em] uppercase text-sm mb-4 italic">Dra. Pilar Neira</h2>
+            <p class="text-[10px] text-gray-500 tracking-[0.3em] uppercase mb-8 italic">Atención profesional, trato humano y resultados duraderos.</p>
+            
+            <div class="flex justify-center gap-8 text-gold mb-10 text-lg">
+                <a href="https://www.instagram.com/dentistproo/"><i class="fa-brands fa-instagram hover:scale-125 transition"></i></a>
+                <a href="https://www.tiktok.com/@dentistproo?is_from_webapp=1&sender_device=pc"><i class="fa-brands fa-tiktok hover:scale-125 transition"></i></a>
+                <a href="https://wa.me/573158605690" target="_blank"><i class="fa-brands fa-whatsapp hover:scale-125 transition"></i></a>
+            </div>
+            
+            <p class="text-[8px] text-gray-700 uppercase tracking-widest italic font-light leading-relaxed">© 2024 Consultorio Odontológico Dra. Pilar Neira - Bogotá, Colombia.<br>Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- INTERGACIÓN: MODAL DE TRATAMIENTO DE DATOS -->
+    <div id="data-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center px-4">
+        <!-- Fondo oscuro con desenfoque -->
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+        
+        <!-- Contenedor del Modal -->
+        <div class="relative bg-black border border-gold p-8 md:p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.2)] text-center animate-in fade-in zoom-in duration-300">
+            <h3 class="luxury-font text-gold text-2xl mb-6 italic">Autorización de Tratamiento</h3>
+            <div class="w-12 h-px bg-gold/50 mx-auto mb-6"></div>
+            
+            <p class="text-gray-300 text-xs md:text-sm leading-relaxed mb-10 italic font-light text-justify">
+                Al marcar esta casilla, usted autoriza de manera previa, expresa e informada al Consultorio Odontológico Dra. Pilar Neira para utilizar los datos suministrados en este formulario con la única finalidad de gestionar su agendamiento de citas, contactarle vía telefónica o WhatsApp para confirmar su asistencia, y realizar el registro preliminar de su atención en salud, garantizando la total reserva y confidencialidad médica según la Ley 1581 de 2012.
+            </p>
+            
+            <button type="button" id="close-modal" class="bg-gold text-black px-10 py-4 font-extrabold uppercase text-[10px] tracking-[0.2em] hover:bg-white transition-all shadow-lg">
+                Entendido y Cerrar
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        
+        const openModalBtn = document.getElementById('open-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const dataModal = document.getElementById('data-modal');
+
+        if (openModalBtn && closeModalBtn && dataModal) {
+            openModalBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                dataModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; 
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                dataModal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; 
+            });
+
+         
+            dataModal.addEventListener('click', (e) => {
+                if (e.target === dataModal || e.target.classList.contains('backdrop-blur-sm')) {
+                    dataModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
