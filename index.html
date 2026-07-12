@@ -51,11 +51,13 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* Contenedor para Firebase */
         #firebase-testimonials-container {
             min-h: 300px;
             transition: all 0.5s ease;
         }
+
+        /* Estilo para el menú móvil */
+        #mobile-menu.hidden { display: none; }
     </style>
 </head>
 <body>
@@ -68,10 +70,17 @@
     <!-- NAVBAR -->
     <nav class="fixed top-0 w-full z-[90] bg-black text-white border-b border-gold/30">
         <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <div class="flex flex-col">
-                <span class="text-xl font-bold tracking-tighter text-gold leading-none uppercase">Dra. Pilar Neira</span>
-                <span class="text-[8px] tracking-[0.3em] uppercase text-gray-400 mt-1">Consultorio Odontológico</span>
+            
+            <!-- LADO IZQUIERDO: LOGO + NOMBRE -->
+            <div class="flex items-center gap-3">
+                <img src="Img/copia.jpg" alt="Logo" class="h-12 w-auto object-contain">
+                <div class="flex flex-col border-l border-gold/30 pl-3">
+                    <span class="text-xl font-bold tracking-tighter text-gold leading-none uppercase">Dra. Pilar Neira</span>
+                    <span class="text-[8px] tracking-[0.3em] uppercase text-gray-400 mt-1">Consultorio Odontológico</span>
+                </div>
             </div>
+
+            <!-- CENTRO/DERECHA: Menú Desktop -->
             <div class="hidden lg:flex space-x-6 text-[10px] font-bold uppercase tracking-widest">
                 <a href="#inicio" class="hover:text-gold transition">Inicio</a>
                 <a href="#servicios" class="hover:text-gold transition">Servicios</a>
@@ -80,9 +89,21 @@
                 <a href="#encuentranos" class="hover:text-gold transition">Encuéntranos</a>
                 <a href="#nosotros" class="hover:text-gold transition">Sobre Nosotros</a>
             </div>
+
+            <!-- BOTÓN HAMBURGUESA MÓVIL -->
             <button class="lg:hidden text-gold text-2xl" id="menu-toggle">
                 <i class="fa-solid fa-bars"></i>
             </button>
+        </div>
+
+        <!-- MENÚ DESPLEGABLE MÓVIL -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-black border-t border-gold/20 px-4 py-6 flex flex-col space-y-4 text-center text-[10px] font-bold uppercase tracking-widest">
+            <a href="#inicio" class="block hover:text-gold transition">Inicio</a>
+            <a href="#servicios" class="block hover:text-gold transition">Servicios</a>
+            <a href="#equipo" class="block hover:text-gold transition">Equipo Médico</a>
+            <a href="#cita" class="block text-gold transition">Agendar Cita</a>
+            <a href="#encuentranos" class="block hover:text-gold transition">Encuéntranos</a>
+            <a href="#nosotros" class="block hover:text-gold transition">Sobre Nosotros</a>
         </div>
     </nav>
 
@@ -197,34 +218,30 @@
                         <img src="Img/Pilar.jpeg" class="w-full h-full object-cover rounded-full" alt="Dra. Pilar Neira">
                     </div>
                     <h3 class="text-xl font-bold">Pilar Neira</h3>
-                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Doctora</p>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="100">
                     <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
                         <img src="Img/Santiago.jpeg" class="w-full h-full object-cover rounded-full" alt="Santiago">
                     </div>
                     <h3 class="text-xl font-bold">Santiago Bohorquez</h3>
-                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Doctor</p>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="200">
                     <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
                         <img src="Img/Paula.png" class="w-full h-full object-cover rounded-full" alt="Paula">
                     </div>
                     <h3 class="text-xl font-bold">Paula Bohorquez</h3>
-                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Doctora</p>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="300">
                     <div class="w-48 h-48 mx-auto mb-6 rounded-full border-2 border-gray-100 p-1 overflow-hidden">
                         <img src="Img/20.png" class="w-full h-full object-cover rounded-full" alt="Tatiana">
                     </div>
                     <h3 class="text-xl font-bold">Tatiana Bohorquez</h3>
-                    <p class="text-gold font-bold uppercase tracking-widest text-[10px] mt-1">Auxiliar</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AGENDA TU CITA (Formspree) -->
+    <!-- AGENDA TU CITA -->
     <section id="cita" class="py-24 bg-[#F9FAFB] px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div data-aos="fade-right">
@@ -276,17 +293,32 @@
             </div>
 
             <div class="bg-white p-8 md:p-12 shadow-2xl rounded-sm border-t-4 border-gold" data-aos="fade-left">
-                <form action="https://formspree.io/f/mnjbwkpv" method="POST" class="space-y-4">
+                <form id="appointment-form" action="https://formspree.io/f/mnjbwkpv" method="POST" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="Nombre" placeholder="Nombre completo*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
-                        <input type="text" name="Apellido" placeholder="Apellido*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                        <input type="text" name="Nombre" placeholder="Nombre completo*" 
+                            class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required
+                            oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                        
+                        <input type="text" name="Apellido" placeholder="Apellido*" 
+                            class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required
+                            oninput="this.value = this.value.replace(/[0-9]/g, '')">
                     </div>
+                    
                     <input type="email" name="Email" placeholder="Correo electrónico*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="tel" name="Telefono" placeholder="Número de teléfono*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
-                        <input type="text" name="Documento" placeholder="Número de documento*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+                        <input type="tel" name="Telefono" placeholder="Número de teléfono*" 
+                            class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric">
+                        
+                        <input type="text" name="Documento" placeholder="Número de documento*" 
+                            class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric">
                     </div>
-                    <input type="text" name="Ciudad" placeholder="Ciudad de contacto*" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required>
+
+                    <input type="text" name="Ciudad" placeholder="Ciudad de contacto*" 
+                        class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold" required
+                        oninput="this.value = this.value.replace(/[0-9]/g, '')">
                     
                     <select name="Servicio" class="w-full p-4 bg-gray-50 border border-gray-100 outline-none focus:border-gold text-gray-500" required>
                         <option value="">Selecciona el servicio*</option>
@@ -306,20 +338,19 @@
                         <option>Tarde (1:00 PM - 6:00 PM)</option>
                     </select>
 
-                    <!-- SECCIÓN DE CHECKBOXES ACTUALIZADA -->
                     <div class="space-y-3 py-2">
                         <label class="flex items-start gap-3 text-[10px] text-gray-400 cursor-pointer group">
-                            <input type="checkbox" required class="accent-gold w-4 h-4 mt-0.5">
-                            <span class="leading-tight">He leído y acepto la <a href="politica-privacidad.html" target="_blank" class="underline text-gold hover:text-white transition-colors">Política de Privacidad</a></span>
+                            <input type="checkbox" name="Acepta_Privacidad" required class="accent-gold w-4 h-4 mt-0.5">
+                            <span class="leading-tight">He leído y acepto la <a href="politica-privacidad.html" class="underline text-gold hover:text-white transition-colors">Política de Privacidad</a></span>
                         </label>
                         
                         <label class="flex items-start gap-3 text-[10px] text-gray-400 cursor-pointer group">
-                            <input type="checkbox" required class="accent-gold w-4 h-4 mt-0.5">
+                            <input type="checkbox" name="Autoriza_Tratamiento" required class="accent-gold w-4 h-4 mt-0.5">
                             <span class="leading-tight">Autorizo el <button type="button" id="open-modal" class="underline text-gold hover:text-white transition-colors text-left">tratamiento de mis datos personales</button></span>
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full bg-black text-white font-extrabold py-5 uppercase tracking-widest hover:bg-gold hover:text-black transition-all">Agendar mi cita</button>
+                    <button type="submit" id="form-submit-btn" class="w-full bg-black text-white font-extrabold py-5 uppercase tracking-widest hover:bg-gold hover:text-black transition-all">Agendar mi cita</button>
                 </form>
             </div>
         </div>
@@ -398,13 +429,10 @@
         </div>
     </footer>
 
-    <!-- INTERGACIÓN: MODAL DE TRATAMIENTO DE DATOS -->
+    <!-- MODAL DE TRATAMIENTO DE DATOS -->
     <div id="data-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center px-4">
-        <!-- Fondo oscuro con desenfoque -->
         <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
-        
-        <!-- Contenedor del Modal -->
-        <div class="relative bg-black border border-gold p-8 md:p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.2)] text-center animate-in fade-in zoom-in duration-300">
+        <div class="relative bg-black border border-gold p-8 md:p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.2)] text-center">
             <h3 class="luxury-font text-gold text-2xl mb-6 italic">Autorización de Tratamiento</h3>
             <div class="w-12 h-px bg-gold/50 mx-auto mb-6"></div>
             
@@ -418,49 +446,104 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Inicializar animaciones AOS
         AOS.init({ duration: 1000, once: true, offset: 100 });
 
+        // Menú Móvil toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
+        // Cerrar menú móvil al hacer clic en un link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        
+        // Modal de Tratamiento de Datos
         const openModalBtn = document.getElementById('open-modal');
         const closeModalBtn = document.getElementById('close-modal');
         const dataModal = document.getElementById('data-modal');
 
-        if (openModalBtn && closeModalBtn && dataModal) {
+        if (openModalBtn) {
             openModalBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 dataModal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden'; 
             });
+        }
 
+        if (closeModalBtn) {
             closeModalBtn.addEventListener('click', () => {
                 dataModal.classList.add('hidden');
                 document.body.style.overflow = 'auto'; 
             });
-
-         
-            dataModal.addEventListener('click', (e) => {
-                if (e.target === dataModal || e.target.classList.contains('backdrop-blur-sm')) {
-                    dataModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
-            });
         }
+
+        // Envío de Formulario vía AJAX (Evita recarga y limpia datos)
+        const appointmentForm = document.getElementById("appointment-form");
+        const submitBtn = document.getElementById("form-submit-btn");
+
+        appointmentForm.addEventListener("submit", async function(e) {
+            e.preventDefault(); 
+            
+            const formData = new FormData(this);
+            submitBtn.innerText = "Enviando...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    alert("¡Gracias! Tu solicitud de cita ha sido enviada con éxito.");
+                    appointmentForm.reset(); 
+                } else {
+                    alert("Hubo un error al enviar el formulario. Por favor intenta de nuevo.");
+                }
+            } catch (error) {
+                alert("Error de conexión. Revisa tu internet e intenta nuevamente.");
+            } finally {
+                submitBtn.innerText = "Agendar mi cita";
+                submitBtn.disabled = false;
+            }
+        });
     </script>
+    <script>
+    // ESTO GUARDA LOS DATOS MIENTRAS ESCRIBEN
+    const inputs = document.querySelectorAll('#appointment-form input, #appointment-form select');
+    
+    // Al cargar la página, recupera lo que estaba escrito
+    window.onload = () => {
+        inputs.forEach(input => {
+            const value = localStorage.getItem(input.name);
+            if (value) input.value = value;
+        });
+    };
+
+    // Cada vez que escriben algo, se guarda en la memoria del navegador
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            localStorage.setItem(input.name, input.value);
+        });
+    });
+
+    // Cuando el formulario se envía con éxito, se borra la memoria
+    const formOriginal = document.getElementById("appointment-form");
+    formOriginal.addEventListener("submit", () => {
+        // Solo borramos si el envío es exitoso (esto lo puedes unir a tu script de AJAX)
+        setTimeout(() => {
+            inputs.forEach(input => localStorage.removeItem(input.name));
+        }, 1000);
+    });
+</script>
 </body>
 </html>
