@@ -43,16 +43,31 @@
 <body class="antialiased">
 
     
-    <nav class="fixed top-0 w-full z-[100] bg-black/95 text-white border-b border-gold/30">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <a href="index.html.html" class="flex flex-col">
-                <span class="text-xl font-bold tracking-tighter text-gold leading-none uppercase">Dra. Pilar Neira</span>
-                <span class="text-[8px] tracking-[0.3em] uppercase text-gray-400 mt-1">Consultorio Odontológico</span>
-            </a>
-            <a href="" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition flex items-center gap-2">
-                <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
-            </a>
-        </div>
+   <nav class="fixed top-0 w-full z-[100] bg-black/95 text-white border-b border-gold/30">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        
+         <!-- LADO IZQUIERDO: LOGO + NOMBRE -->
+         <a href="index.html" class="flex items-center gap-3 group">
+            <!-- Tu Logo -->
+            <img src="Img/copia.jpg" alt="Logo" class="h-12 w-auto object-contain">
+            
+            <!-- Texto -->
+            <div class="flex flex-col border-l border-gold/30 pl-3">
+                <span class="text-xl font-bold tracking-tighter text-gold leading-none uppercase group-hover:text-white transition-colors">
+                    Dra. Pilar Neira
+                </span>
+                <span class="text-[8px] tracking-[0.3em] uppercase text-gray-400 mt-1">
+                    Consultorio Odontológico
+                </span>
+            </div>
+          </a>
+
+        <!-- LADO DERECHO: BOTÓN VOLVER (Corregido) -->
+        <a href="#" onclick="window.history.back(); return false;" class="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition flex items-center gap-2 text-white">
+         <i class="fa-solid fa-arrow-left"></i> Volver al Formulario
+        </a>
+
+       </div>
     </nav>
 
     
